@@ -58,11 +58,11 @@ const UserSchema = new mongoose.Schema(
     countryPreference: {
       type: String,
       required: true,
-      enum: Object.keys(countryCodeMap),
+      // enum: Object.keys(countryCodeMap),
     },
     degree: {
       type: String,
-      enum: ["Bachelor", "Master", "Phd"],
+      // enum: ["Bachelor", "Master", "Phd"],
       required: true,
     },
   },
