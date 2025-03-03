@@ -4,10 +4,12 @@ const path = require("path");
 const fs = require("fs");
 const newUser = async (req, res) => {
   try {
-    const { name, email, subject, contactNo, countryPreference, degree } =
+    const { name, email, subject, contactNo, countryPreference, degree, year } =
       req.body;
 
-    if (!name || !email || !contactNo || !countryPreference || !degree) {
+    if (
+      (!name || !email || !contactNo || !countryPreference || !degree, !year)
+    ) {
       return res.status(400).json({
         success: false,
         message: "All fields are Required !",
@@ -25,6 +27,7 @@ const newUser = async (req, res) => {
       contactNo,
       countryPreference,
       degree,
+      year
     });
     await newUser.save();
 
@@ -72,6 +75,7 @@ const generateExcelFile = async () => {
       { header: "Country", key: "countryPreference", width: 15 },
       { header: "Country_Code", key: "countryCode", width: 5 },
       { header: "Degree", key: "degree", width: 15 },
+      { header: "Year", key: "year", width: 15 },
       { header: "Created At", key: "createdAt", width: 25 },
     ];
 

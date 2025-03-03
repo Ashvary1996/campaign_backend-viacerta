@@ -41,6 +41,10 @@ const UserSchema = new mongoose.Schema(
       //   message: "Not a valid email address",
       // },
     },
+    year: {
+      type: String,
+      required: true,
+    },
     subject: {
       type: String,
     },
@@ -62,7 +66,7 @@ const UserSchema = new mongoose.Schema(
     },
     degree: {
       type: String,
-      // enum: ["Bachelor", "Master", "Phd"],
+      // enum: ["Bachelor", "Master", "Ph.D"],
       required: true,
     },
   },
