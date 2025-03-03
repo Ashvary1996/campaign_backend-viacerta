@@ -36,10 +36,10 @@ const UserSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
       unique: true,
-      validate: {
-        validator: validator.isEmail,
-        message: "Not a valid email address",
-      },
+      // validate: {
+      //   validator: validator.isEmail,
+      //   message: "Not a valid email address",
+      // },
     },
     subject: {
       type: String,
@@ -47,12 +47,12 @@ const UserSchema = new mongoose.Schema(
     contactNo: {
       type: String,
       required: [true, "Please Enter Your Phone Number"],
-      validate: {
-        validator: function (v) {
-          return /^[6-9]\d{9}$/.test(v);
-        },
-        message: "Enter a valid phone number (10 digits, starting with 6-9).",
-      },
+      // validate: {
+      //   validator: function (v) {
+      //     return /^[6-9]\d{9}$/.test(v);
+      //   },
+      //   message: "Enter a valid phone number (10 digits, starting with 6-9).",
+      // },
     },
     countryCode: { type: String },
     countryPreference: {
@@ -69,13 +69,13 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-UserSchema.pre("save", function (next) {
-  if (this.countryPreference && countryCodeMap[this.countryPreference]) {
-    this.countryCode = countryCodeMap[this.countryPreference];
-  } else {
-    return next(new Error("Invalid country preference"));
-  }
-  next();
-});
+// UserSchema.pre("save", function (next) {
+//   if (this.countryPreference && countryCodeMap[this.countryPreference]) {
+//     this.countryCode = countryCodeMap[this.countryPreference];
+//   } else {
+//     return next(new Error("Invalid country preference"));
+//   }
+//   next();
+// });
 const User = mongoose.model("Users", UserSchema);
 module.exports = User;
