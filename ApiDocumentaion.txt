@@ -1,0 +1,72 @@
+Base URL : http://localhost:8000/user
+Endpoints;
+ 
+
+POST 1. Create a New User
+      /new_user
+
+      Request Body:
+
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "subject": "Computer Science",
+        "contactNo": "9876543210",
+        "countryPreference": "USA",
+        "degree": "Master"
+      }
+
+      Response:
+
+      {
+        "message": "User registered successfully",
+        "user": { ... }
+      }
+
+
+2. Get All Users
+
+      GET /all_user
+
+      Response:
+
+      {
+        "total_Users": 10,
+        "allUsers": [ ... ]
+      }
+
+3. Export Users Data to Excel
+
+    Endpoint: 
+
+        GET /export_excel
+
+    Response:
+
+    Downloads an Excel file (UsersData.xlsx).
+
+    If the file does not exist:
+    {
+      "message": "File not found"
+    }
+
+
+................................................................
+
+
+
+app.use("/user", require("./routes/userRoute"));
+
+route.post("/new_user", newUser);
+route.get("/all_user", getAllUsers);
+route.get("/export_excel", exportToExcel);
+
+
+
+
+
+
+
+
+
+
