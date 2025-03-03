@@ -8,13 +8,13 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL  ,
-    // methods: ["GET", "POST"],
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   })
 );
 //
 app.use("/user", require("./routes/userRoute"));
- 
+
 //
 app.listen(port, () => {
   console.log("Server is up at port ", port);
